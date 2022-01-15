@@ -156,7 +156,9 @@ func UpdateFood() gin.HandlerFunc {
 			}
 			updateObj = append(updateObj, bson.E{"menu", food.Price})
 		}
+
 		food.Update_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		
 		updateObj = append(updateObj, bson.E{"updated_at", food.Update_at})
 
 		upsert := true
