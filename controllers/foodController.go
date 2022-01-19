@@ -49,11 +49,11 @@ func GetFoods() gin.HandlerFunc {
 					{"_id", 0},
 					{"total_count", 1},
 					{"food_items", bson.D{{"$slice", []interface{}{"$data", startIndex, recordPerPage}}}},
-				}
-			}
+				},
+			},
 		}
 		result, err := foodCollection.Aggregate(ctx, mongo.Pipeline{
-			matchStage, groupStage, projectStage
+			matchStage, groupStage, projectStage,
 		})
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while listing food items"})

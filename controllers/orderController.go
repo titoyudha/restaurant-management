@@ -18,7 +18,6 @@ import (
 
 var (
 	orderCollection *mongo.Collection = databases.OpenCollection(databases.Client, "order")
-	tableCollection *mongo.Collection = databases.OpenCollection(databases.Client, "table")
 )
 
 func GetOrder() gin.HandlerFunc {
